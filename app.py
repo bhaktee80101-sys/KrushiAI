@@ -81,7 +81,7 @@ Keep the explanation simple and practical.
         st.info(
             "💡 This is an AI-based preliminary assessment. "
             "For serious crop problems, consult an agricultural expert."
-        )import streamlit as st
+        )
 from google import genai
 from PIL import Image
 

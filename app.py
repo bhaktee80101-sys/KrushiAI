@@ -2,83 +2,74 @@ import streamlit as st
 from google import genai
 from PIL import Image
 
-# Page setup
-st.set_page_config(
-    page_title="KrushiAI",
-    page_icon="🌱"
-)
+st.set_page_config(page_title="KrushiAI", page_icon="🌱")
 
-# Gemini AI client
 client = genai.Client(
     api_key=st.secrets["GEMINI_API_KEY"]
 )
 
-# Title
 st.title("🌱 KrushiAI")
 st.subheader("AI-Based Crop Health Assistant")
+st.write("Upload a crop-leaf image for a preliminary AI health assessment.")
 
-st.write(
-    "Upload a crop-leaf image and KrushiAI will use AI "
-    "to provide a preliminary crop health assessment."
-)
-
-# Crop selection
 crop = st.selectbox(
     "🌾 Select your crop",
     ["Tomato", "Potato", "Rice", "Wheat", "Cotton"]
 )
 
-# Image upload
 image = st.file_uploader(
     "📷 Upload a leaf image",
     type=["jpg", "jpeg", "png"]
 )
 
-if image is not None:
-
+if image:
     img = Image.open(image)
+    st.image(img, caption="Uploaded crop image", use_container_width=True)
 
-    st.image(
-        img,
-        caption="Uploaded crop image",
-        use_container_width=True
-    )
+    if st.button("🤖 Analyze Crop", use_container_width=True):
 
-    if st.button("🤖 Analyze Crop"):
+        prompt = f"""
+You are KrushiAI, a farmer-friendly agricultural AI assistant.
+Analyze this {crop} leaf image and give a PRELIMINARY visual assessment.
 
-        with st.spinner("AI is analyzing the crop... 🌱"):
+Use exactly these sections:
 
-            prompt = f"""
-You are KrushiAI, an agricultural crop health assistant.
+## 🌱 Crop Health Report
 
-Analyze this image of a {crop} leaf.
+**Crop:** {crop}
 
-Give a simple, farmer-friendly response containing:
+**🩺 Health Status:** 
+Choose: 🟢 Appears Healthy, 🟡 Possible Stress, or 🔴 Possible Disease.
 
-1. Crop identified
-2. Whether the leaf appears healthy or shows signs of disease/stress
-3. Possible disease or problem
-4. Visible symptoms
-5. Possible causes
-6. Recommended next steps for the farmer
-7. Prevention tips
+**🔬 Possible Problem**
+Give the most likely possible problem. Do not claim certainty.
 
-Do not claim certainty from an image alone.
+**👀 Visible Symptoms**
+- List only symptoms visible in the image.
+
+**💡 Possible Causes**
+- Give simple possible causes.
+
+**🌾 Recommended Actions**
+1. Give practical next steps.
+2. Give another useful step.
+3. Say when to consult a local agricultural expert.
+**🛡️ Prevention Tips**
+- Give simple prevention advice.
+
+**⚠️ Important Note**
+State that this is an AI-based preliminary assessment and
+cannot replace professional diagnosis.
+
+Keep the answer simple, practical, and concise.
 If the image is unclear, say that a clearer image is needed.
-Keep the explanation simple and practical.
 """
 
+        with st.spinner("🤖 KrushiAI is analyzing... 🌱"):
             response = client.models.generate_content(
                 model="gemini-3.6-flash",
                 contents=[prompt, img]
             )
 
         st.success("✅ Analysis completed!")
-
-        st.markdown("### 🔍 KrushiAI Analysis")
-        st.write(response.text)
-
-        st.info(
-            "💡 This is an AI-based preliminary assessment. "
-            "For serious crop problems, consult an agricultural expert."
-        )
+        st.markdown(response.text)

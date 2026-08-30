@@ -41,6 +41,12 @@ Use exactly these sections:
 **🩺 Health Status:** 
 Choose: 🟢 Appears Healthy, 🟡 Possible Stress, or 🔴 Possible Disease.
 
+**📊 Estimated Visible Affected Area:**
+Estimate the percentage of the visible leaf area that appears affected.
+Give a whole-number percentage from 0% to 100%.
+This is only a visual estimate from the uploaded image and is NOT
+a measurement of disease severity.
+
 **🔬 Possible Problem**
 Give the most likely possible problem. Do not claim certainty.
 

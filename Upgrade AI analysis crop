@@ -80,19 +80,4 @@ If the image is unclear, say that a clearer image is needed.
             )
 
         st.success("✅ Analysis completed!")
-        result = response.text
-
-        # Find the affected-area percentage
-          import re
-
-        match = re.search(r"Affected Area:\s*(\d+)", result)
-
-        if match:
-           affected_area = int(match.group(1))
-
-        st.markdown("### 📊 Estimated Visible Affected Area")
-        st.progress(affected_area)
-        st.write(f"**{affected_area}% of the visible leaf area appears affected.**")
-
-        st.markdown("---")
         st.markdown(response.text)

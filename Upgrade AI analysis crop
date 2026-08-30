@@ -43,7 +43,9 @@ Choose: 🟢 Appears Healthy, 🟡 Possible Stress, or 🔴 Possible Disease.
 
 **📊 Estimated Visible Affected Area:**
 Estimate the percentage of the visible leaf area that appears affected.
-Give a whole-number percentage from 0% to 100%.
+Give a ONLY a whole-number percentage from 0 to 100 on the next line.
+Example:
+Affected Area: 20
 This is only a visual estimate from the uploaded image and is NOT
 a measurement of disease severity.
 
@@ -78,4 +80,19 @@ If the image is unclear, say that a clearer image is needed.
             )
 
         st.success("✅ Analysis completed!")
+        result = response.text
+
+        # Find the affected-area percentage
+          import re
+
+        match = re.search(r"Affected Area:\s*(\d+)", result)
+
+        if match:
+           affected_area = int(match.group(1))
+
+        st.markdown("### 📊 Estimated Visible Affected Area")
+        st.progress(affected_area)
+        st.write(f"**{affected_area}% of the visible leaf area appears affected.**")
+
+        st.markdown("---")
         st.markdown(response.text)

@@ -1,4 +1,5 @@
 import streamlit as st
+import re
 from google import genai
 from PIL import Image
 
@@ -181,20 +182,27 @@ If the image is unclear, say that a clearer image is needed.
             )
 
         st.success("✅ Analysis completed!")
-        st.markdown(
-    """
-    <style>
-    .report-box {
-        background: white;
-        padding: 22px;
-        border-radius: 18px;
-        border: 1px solid #d8ead2;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        margin-top: 15px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-    )
-        st.markdown(response.text)
-    
+        # Extract affected area percentage
+        match = re.search(r"Affected Area:\s*(\d+)", response.text)
+
+        if match:
+            affected_area = int(match.group(1))
+            affected_area = max(0, min(100, affected_area))
+
+            st.markdown("### 📊 Estimated Visible Affected Area")
+            st.metric("Visible affected area", f"{affected_area}%")
+            st.progress(affected_area)
+
+            st.caption(
+                "Visual estimate from the uploaded image — "
+                "not a measurement of disease severity."
+            )
+        # Remove the old affected-area section from the AI report
+        cleaned_report = re.sub(
+            r"\*\*📊 Estimated Visible Affected Area:\*\*.*?"
+            r"(?=\*\*🔬 Possible Problem\*\*)",
+            "",
+            response.text,
+            flags=re.DOTALL
+        )
+        st.markdown(cleaned_report)

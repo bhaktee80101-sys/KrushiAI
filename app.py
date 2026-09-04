@@ -21,6 +21,18 @@ with st.sidebar:
     # 🎨 HOMEPAGE DESIGN
 st.markdown("""
 <style>
+.stButton > button[kind="primary"] {
+    background-color: #58a942;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+}
+
+.stButton > button[kind="primary"]:hover {
+    background-color: #3f8f32;
+    color: white;
+}
 .stApp {
     background: linear-gradient(135deg, #f7fff4, #e8f6df);
 }

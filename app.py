@@ -181,4 +181,22 @@ If the image is unclear, say that a clearer image is needed.
             )
 
         st.success("✅ Analysis completed!")
-        st.markdown(response.text)
+    st.markdown(
+    """
+    <style>
+    .report-box {
+        background: white;
+        padding: 22px;
+        border-radius: 18px;
+        border: 1px solid #d8ead2;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        margin-top: 15px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown("### 🌱 Crop Health Report")
+st.markdown(response.text)
+    

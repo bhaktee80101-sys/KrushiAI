@@ -32,16 +32,32 @@ h1, h2, h3 {
 .hero {
     padding: 35px 10px 25px 10px;
 }
-
 .hero-title {
-    font-size: 52px;
+    font-size: 42px;
+    line-height: 1.15;
     font-weight: 800;
     color: #14532d;
+    margin-bottom: 18px;
 }
 hero-title span {
     color: #58a942;
 }
+@media (max-width: 600px) {
+    .hero {
+        padding: 20px 5px 15px 5px;
+    }
 
+    .hero-title {
+        font-size: 38px;
+        line-height: 1.12;
+        margin-bottom: 14px;
+    }
+
+    .hero-text {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+}
 .hero-text {
     font-size: 20px;
     color: #374151;

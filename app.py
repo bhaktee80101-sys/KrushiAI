@@ -83,11 +83,6 @@ health assessment with practical guidance for farmers.
 
 client = genai.Client(
     api_key=st.secrets["GEMINI_API_KEY"]
-)
-
-st.title("🌱 KrushiAI")
-st.subheader("AI-Based Crop Health Assistant")
-st.write("Upload a crop-leaf image for a preliminary AI health assessment.")
 
 crop = st.selectbox(
     "🌾 Select your crop",

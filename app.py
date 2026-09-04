@@ -127,7 +127,7 @@ if image:
     img = Image.open(image)
     st.image(img, caption="Uploaded crop image", use_container_width=True)
 
-if st.button("🌱 Analyze Crop", use_container_width=True, type="primary"):
+    if st.button("🌱 Analyze Crop", use_container_width=True):
 
         prompt = f"""
 You are KrushiAI, a farmer-friendly agricultural AI assistant.

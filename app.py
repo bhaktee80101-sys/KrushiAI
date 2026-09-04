@@ -195,8 +195,6 @@ If the image is unclear, say that a clearer image is needed.
     </style>
     """,
     unsafe_allow_html=True
-)
-
-        st.markdown("### 🌱 Crop Health Report")
+    )
         st.markdown(response.text)
     

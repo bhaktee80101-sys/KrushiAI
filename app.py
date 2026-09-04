@@ -83,7 +83,7 @@ health assessment with practical guidance for farmers.
 
 client = genai.Client(
     api_key=st.secrets["GEMINI_API_KEY"]
-
+)
 crop = st.selectbox(
     "🌾 Select your crop",
     ["Tomato", "Potato", "Rice", "Wheat", "Cotton"]

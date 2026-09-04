@@ -4,6 +4,20 @@ from PIL import Image
 
 st.set_page_config(page_title="KrushiAI", page_icon="🌱")
 
+# ⚙️ Settings
+with st.sidebar:
+    st.header("⚙️ Settings")
+
+    language = st.selectbox(
+        "🌐 Language",
+        ["English", "Hindi", "Marathi"]
+    )
+
+    voice = st.toggle("🔊 Voice Output", value=False)
+
+    st.divider()
+    st.caption("🌱 KrushiAI")
+    st.caption("AI-Based Crop Health Assistant")
 client = genai.Client(
     api_key=st.secrets["GEMINI_API_KEY"]
 )
@@ -30,6 +44,7 @@ if image:
 
         prompt = f"""
 You are KrushiAI, a farmer-friendly agricultural AI assistant.
+Give the response in {language}.
 Analyze this {crop} leaf image and give a PRELIMINARY visual assessment.
 
 Use exactly these sections:

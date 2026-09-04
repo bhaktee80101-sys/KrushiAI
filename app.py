@@ -181,7 +181,7 @@ If the image is unclear, say that a clearer image is needed.
             )
 
         st.success("✅ Analysis completed!")
-    st.markdown(
+        st.markdown(
     """
     <style>
     .report-box {

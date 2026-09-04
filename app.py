@@ -131,7 +131,7 @@ if image:
 ):
     
     if image:
-        img = Image.open(image)
+        img = Image.open(image),
 
 
         prompt = f"""

@@ -18,6 +18,69 @@ with st.sidebar:
     st.divider()
     st.caption("🌱 KrushiAI")
     st.caption("AI-Based Crop Health Assistant")
+    # 🎨 HOMEPAGE DESIGN
+st.markdown("""
+<style>
+.stApp {
+    background: linear-gradient(135deg, #f7fff4, #e8f6df);
+}
+
+h1, h2, h3 {
+    color: #14532d;
+}
+
+.hero {
+    padding: 35px 10px 25px 10px;
+}
+
+.hero-title {
+    font-size: 52px;
+    font-weight: 800;
+    color: #14532d;
+}
+hero-title span {
+    color: #58a942;
+}
+
+.hero-text {
+    font-size: 20px;
+    color: #374151;
+}
+
+.feature {
+    background: rgba(255,255,255,0.8);
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid #d9ebd0;
+}
+.badge {
+    display: inline-block;
+    background: #e1f4d8;
+    color: #166534;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+</style>
+""", unsafe_allow_html=True)
+# 🌱 MAIN HOMEPAGE
+st.markdown("""
+<div class="hero">
+
+<div class="badge">🌱 AI FOR SMART FARMING</div>
+
+<div class="hero-title">
+Smart Farming.<br>
+<span>Healthy Future.</span> 🌿
+</div>
+<p class="hero-text">
+Upload a crop-leaf image and get an AI-powered preliminary
+health assessment with practical guidance for farmers.
+</p>
+
+</div>
+""", unsafe_allow_html=True)
+
 client = genai.Client(
     api_key=st.secrets["GEMINI_API_KEY"]
 )

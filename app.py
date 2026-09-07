@@ -127,17 +127,13 @@ if image:
     img = Image.open(image)
     st.image(img, caption="Uploaded crop image", use_container_width=True)
 
-    if st.button("🌱 Analyze Crop", use_container_width=True, disabled=not image
-):
-    
-    if image:
-        img = Image.open(image),
-
+    if st.button("🌱 Analyze Crop", use_container_width=True):
 
         prompt = f"""
-You are KrushiAI, a farmer-friendly agricultural AI assistant.
+You are KrushAI, a farmer-friendly agricultural AI assistant.
+
 Give the response in {language}.
-Analyze this {crop} leaf image and give a PRELIMINARY visual assessment.
+Analyze this {crop} leaf image and give a PRELIMINARY crop health assessment.
 
 Use exactly these sections:
 
@@ -145,22 +141,22 @@ Use exactly these sections:
 
 **Crop:** {crop}
 
-**🩺 Health Status:** 
+**🩺 Health Status:**
 Choose: 🟢 Appears Healthy, 🟡 Possible Stress, or 🔴 Possible Disease.
-
 **📊 Estimated Visible Affected Area:**
 Estimate the percentage of the visible leaf area that appears affected.
-Give a ONLY a whole-number percentage from 0 to 100 on the next line.
+Give ONLY a whole-number percentage from 0 to 100.
+
 Example:
 Affected Area: 20
-This is only a visual estimate from the uploaded image and is NOT
-a measurement of disease severity.
+
+This is only a visual estimate from the uploaded image and is NOT a measurement of disease severity.
 
 **🔬 Possible Problem**
-Give the most likely possible problem. Do not claim certainty.
+Mention the most likely visible problem, but clearly state that this is a preliminary AI assessment.
 
 **👀 Visible Symptoms**
-- List only symptoms visible in the image.
+- List the visible symptoms.
 
 **💡 Possible Causes**
 - Give simple possible causes.

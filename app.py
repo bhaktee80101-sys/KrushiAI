@@ -114,19 +114,25 @@ health assessment with practical guidance for farmers.
 client = genai.Client(
     api_key=st.secrets["GEMINI_API_KEY"]
 )
+
 # 📚 Load KrushiAI disease database
 with open("data/disease_database.json", "r", encoding="utf-8") as f:
     disease_db = json.load(f)
-    def find_disease_info(crop_name, disease_name):
+
+
+# 🔎 Search the disease database
+def find_disease_info(crop_name, disease_name):
     crop_name = crop_name.lower()
     disease_name = disease_name.lower()
 
-    for crop in disease_db["crops"]:
-        if crop["crop_name"].lower() == crop_name:
-            for disease in crop["diseases"]:
+    for crop_data in disease_db["crops"]:
+        if crop_data["crop_name"].lower() == crop_name:
+            for disease in crop_data["diseases"]:
                 if disease["disease_name"].lower() in disease_name:
                     return disease
+
     return None
+    
 crop = st.selectbox(
     "🌾 Select your crop",
     ["Tomato", "Potato", "Rice", "Wheat", "Cotton"]

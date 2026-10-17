@@ -1,0 +1,56 @@
+
+{
+  "version": "1.0",
+  "crops": [
+    {
+      "crop_id": "tomato",
+      "crop_name": "Tomato",
+      "diseases": [
+        {
+          "disease_id": "tomato_early_blight",
+          "disease_name": "Early blight",
+          "causal_agent": "Alternaria species",
+          "symptoms": [
+            "Brown leaf spots",
+            "Spots may develop concentric rings",
+            "Yellowing of affected leaves"
+          ],
+          "prevention": [
+            "Use healthy planting material",
+            "Monitor plants regularly",
+            "Maintain suitable plant spacing"
+          ],
+          "management": "Confirm the diagnosis and consult a local agricultural expert for appropriate management.",
+          "source_name": "ICAR",
+          "source_url": "https://epubs.icar.org.in/",
+          "review_status": "needs_verification"
+        }
+      ]
+    },
+    {
+      "crop_id": "potato",
+      "crop_name": "Potato",
+      "diseases": [
+        {
+          "disease_id": "potato_late_blight",
+          "disease_name": "Late blight",
+          "causal_agent": "Phytophthora infestans",
+          "symptoms": [
+            "Water-soaked leaf spots",
+            "Dark brown lesions",
+            "Possible white growth on leaf undersides in humid conditions"
+          ],
+          "prevention": [
+            "Use healthy seed tubers",
+            "Inspect crops regularly",
+            "Follow locally recommended crop hygiene practices"
+          ],
+          "management": "Seek prompt local agricultural advice if late blight is suspected.",
+          "source_name": "ICAR",
+          "source_url": "https://epubs.icar.org.in/",
+          "review_status": "needs_verification"
+        }
+      ]
+    }
+  ]
+}
